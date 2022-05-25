@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function post() {
+        url = "https://api.instantwebtools.net/v1/airlines";
+        data = {
+          id: 1988889,
+          name: "gurmeet",
+          country: "india",
+          logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Qatar_Airways_Logo.svg/300px-Qatar_Airways_Logo.svg.png",
+          slogan: "Going Places Together",
+          head_quaters: "Qatar Airways Towers, Doha, Qatar",
+          website: "www.qatarairways.com",
+          established: "1998",
+        };
+        params = {
+          method: "post",
+          headers: {
+            "content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+        let response = await fetch(url, params);
+        let datas = await response.json();
+      }
+
+      post();
+
+      async function get() {
+        let response = await fetch(
+          "https://api.instantwebtools.net/v1/airlines/1988889",
+        );
+
+        let data = await response.json();
+        console.log(data);
+      }
+      get();
+    </script>
+  </body>
+</html>
